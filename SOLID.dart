@@ -1,4 +1,4 @@
-class Car{
+class Car{ //please structure the project into different files for each class, and in different folder for the layers.
   int power;
   int seats;
   int wheels;
@@ -8,7 +8,7 @@ class Car{
   Car(this.power, this.seats, this.wheels, this.colour, this.hybryd);
 }
 
-class Bus extends Car{
+class Bus extends Car{ //bus is not a car. Car should be Vehicle
   int maxPassengers;
 
   Bus(int power, int seats, int wheels, String colour, bool hybryd,
@@ -25,7 +25,7 @@ class Lorry extends Car{
 
 }
 
-abstract class CRUD{
+abstract class CRUD{. //CRUD is not a good Class name. This should be some kind of Service, example: BaseService
   void create(){
     print("Created!");
   }
@@ -43,7 +43,7 @@ abstract class CRUD{
   }
 }
 
-class CarService extends CRUD{}
+class CarService extends CRUD{} // make it so that the print statements include the color of the just modified vehicle. Example: print('Something ${vehicle.colour} was created')
 
 
 class FlyingVehicle{
@@ -73,14 +73,14 @@ class PassengerPlane extends FlyingVehicle{
 
 class FlyingService extends CRUD{}
 
-class Repo{
+class Repo{ //"Repo" is not specific name enough. Please have two repos for the two base classes
 
-  FlyingService f;
+  FlyingService f; //these should be final fields
   CarService c;
   
-  Repo(this.f, this.c);
+  Repo(this.f, this.c); //congratz on the DI
 
-  void doSth(){
+  void doSth(){ //this should be the main method. The Repo doesn't do sth, until it's instructed to di sth
    f.create();
    f.delete();
    print("\n");
@@ -93,7 +93,7 @@ class Repo{
 main(){
   FlyingService f = FlyingService();
   CarService c = CarService();
-
-  Repo r = Repo(f, c);
+//there are no actual vehicles in this project. Please create some instances of attack helicopters and stuff to call the service methods on
+  Repo r = Repo(f, c); 
   r.doSth();
 }
